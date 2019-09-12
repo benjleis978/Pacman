@@ -10,6 +10,12 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Media;
 
+/// <summary>
+/// Created by Mr. T.
+/// September 2019
+/// Demonstration of basic animation and sounds
+/// </summary>
+
 namespace Pacman
 {
     public partial class Form1 : Form
@@ -33,11 +39,16 @@ namespace Pacman
         {
             Graphics g = this.CreateGraphics();
             Pen pathPen = new Pen(Color.Blue, 20);
-            Font titleFont = new Font("Courier New", 16);
             SolidBrush pacBrush = new SolidBrush(Color.Yellow);
+
+            SoundPlayer beginSound = new SoundPlayer(Properties.Resources.begin);
+            SoundPlayer chompSound = new SoundPlayer(Properties.Resources.chomp);
 
             //frame 1
             g.Clear(Color.Black);
+            beginSound.Play();
+            Thread.Sleep(5000);
+            chompSound.Play();
             g.DrawLine(pathPen, 40, 60, 240, 60);
             g.DrawLine(pathPen, 40, 140, 240, 140);
             g.FillPie(pacBrush, 40, 75, 50, 50, 30, 300);
@@ -46,6 +57,7 @@ namespace Pacman
 
             //frame 2
             g.Clear(Color.Black);
+            chompSound.Play();
             g.DrawLine(pathPen, 40, 60, 240, 60);
             g.DrawLine(pathPen, 40, 140, 240, 140);
             g.FillPie(pacBrush, 100, 75, 50, 50, 30, 360);
@@ -54,6 +66,7 @@ namespace Pacman
 
             //frame 2
             g.Clear(Color.Black);
+            chompSound.Play();
             g.DrawLine(pathPen, 40, 60, 240, 60);
             g.DrawLine(pathPen, 40, 140, 240, 140);
             g.FillPie(pacBrush, 160, 75, 50, 50, 30, 300);
